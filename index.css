@@ -1,0 +1,23 @@
+#content {
+  width: 100px;
+  height: 100px;
+  background-color: blanchedalmond;
+}
+
+#life {
+  font-size: 30px;
+}
+
+#newDiv {
+  background-color: beige;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid black;
+  float: left;
+}
+
+.draggingCard {
+  border-color: red;
+}
