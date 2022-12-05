@@ -1,13 +1,18 @@
-let draggingCard = null;
-
-function onDragStartCard(ev) {
-  draggingCard = this; //드래깅 중인 객체로 자신을 연결
-  this.classList.add("draggingCard");
+let dragend = null;
+let dragOverBox = null;
+function onDragStart(ev) {
+  dragend = this;
 }
-
-function onDropBox(ev) {
-  this.appendChild(draggingCard)
-  
+function onDragOver(ev) {
+ ev.preventDefault();
+}
+function onDrop(ev) {
+  ev.preventDefault();
+  this.appendChild(dragend);
+}
+function onDragOverBox(ev) {
+  ev.preventDefault();
+  dragOverBox = this;
 }
 
 function shuffleArray(array) {
@@ -28,30 +33,39 @@ let koreancontent = ['안녕하세요 저는 전경민이에요.', '만나서 �
   shuffleArray(eng1)
   shuffleArray(korean1)         
   for (i=0; i<eng1.length; i++) {         
-          let newDiv = document.createElement('div');
-          let newText = document.createTextNode(eng1[i]) //div안에 들어갈 text 지정
-          newDiv.setAttribute("id", "newDiv") //새로 만들어진 div의 id값 부여
-          newDiv.draggable="true";
-          newDiv.appendChild(newText);
-          document.getElementById("container").appendChild(newDiv) 
-          document.body.appendChild(container);    
+  let newDiv = document.createElement('div');
+  let newText = document.createTextNode(eng1[i]) //div안에 들어갈 text 지정
+  newDiv.setAttribute("id", "newDiv") //새로 만들어진 div의 id값 부여
+  newDiv.draggable="true";
+  newDiv.appendChild(newText);
+  document.getElementById("container").appendChild(newDiv) 
+  document.body.appendChild(container);    
+  let contents = document.querySelectorAll("#newDiv")
+  for(let item of contents) {
+  item.addEventListener("dragstart", onDragStart);
+  item.addEventListener("dragover", onDragOver);
+}
+let contain = document.querySelectorAll("#container");
+for(let item of contain) {
+  item.addEventListener("dragover",onDragOverBox);
+  item.addEventListener("drop", onDrop); 
+
+}
+
         }
       }
 //게임 시작 버튼 클릭시 이벤트 -----------------------------------------------------------    
-let contents = document.querySelectorAll("#newDiv")    
-  for(let con of contents){
-    con.addEventListener("dragstart", onDragStartCard);
-  }
+// 드래그앤 드롭-----------------------------------------------------------
+
+
+
+
+
+
 
 
     
     }
-  
-
-
-
-// 드래그앤 드롭-----------------------------------------------------------
-
 
 
 

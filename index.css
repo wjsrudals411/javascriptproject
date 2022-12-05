@@ -15,9 +15,20 @@
   text-align: center;
   padding: 10px;
   border: 1px solid black;
-  float: left;
+  
 }
 
-.draggingCard {
-  border-color: red;
+.drag {
+  background-color: red;
+}
+
+.overCard {
+  background-color: aqua;
+}
+
+#container {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  background-color: beige;
 }
